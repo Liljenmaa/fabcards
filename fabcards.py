@@ -4,7 +4,7 @@ from urllib.request import urlopen
 import json
 from io import BytesIO
 
-cards = json.load(urlopen('https://api.fabdb.net/cards?per_page=99999'))
+cards = ""
 
 mainWindow = tk.Tk()
 mainWindow.geometry("546x762")
@@ -30,5 +30,8 @@ def fetchCard():
         mainWindow.after(0, fetchCard)
 
 if __name__ == "__main__":
+    print("Getting the cards from FaBDB.net...")
+    cards = json.load(urlopen('https://api.fabdb.net/cards?per_page=99999'))
+    print("Complete!")
     mainWindow.after(0, fetchCard)
     tk.mainloop()
